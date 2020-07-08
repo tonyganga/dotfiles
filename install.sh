@@ -25,6 +25,7 @@ plasticboy/vim-markdown
 godlygeek/tabular
 morhetz/gruvbox
 junegunn/fzf.vim
+rust-lang/rust.vim
 "
 mkdir -p ~/.vim/autoload ~/.vim/bundle
 # make sure we have pathogen
