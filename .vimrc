@@ -109,6 +109,7 @@ map <silent> <LocalLeader>nt :call g:WorkaroundNERDTreeToggle()<CR>
 function! g:WorkaroundNERDTreeToggle()
   try | NERDTreeToggle | catch | silent! NERDTree | endtry
 endfunction
+let g:NERDTreeWinSize=50
 "--------------
 " vim-terraform
 "--------------
@@ -119,6 +120,7 @@ let g:terraform_fmt_on_save=1
 " vim-go
 "--------------
 let g:go_fmt_command = "goimports"
+let g:go_gopls_enabled = 1
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_highlight_types = 1
@@ -132,19 +134,33 @@ let g:go_gocode_propose_source = 1
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet']
 let g:go_auto_type_info = 1
-"let g:go_info_mode = 'gocode'
-  let g:go_debug_windows = {
+let g:go_debug_windows = {
               \ 'vars':       'leftabove 50vnew',
               \ 'stack':      'rightbelow 40new',
               \ 'goroutines': 'botright 10new',
               \ 'out':        'botright 5new',
     \ }
+"--------------
+" rust.vim
+"--------------
+let g:rustfmt_autosave = 1
+set hidden
+let g:racer_cmd = "~/.cargo/bin/racer"
+let g:ycm_language_server =
+      \ [
+      \   {
+      \     'name': 'rust',
+      \     'cmdline': ['rust-analyzer'],
+      \     'filetypes': ['rust'],
+      \     'project_root_files': ['Cargo.toml']
+      \   }
+      \ ]
 " Shortcuts
 augroup go
   set updatetime=100
   autocmd!
   " Show by default 4 spaces for a tab
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=5 shiftwidth=4
   " :GoBuild and :GoTestCompile
   autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
   " :GoTest
