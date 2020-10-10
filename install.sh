@@ -26,6 +26,7 @@ godlygeek/tabular
 morhetz/gruvbox
 junegunn/fzf.vim
 rust-lang/rust.vim
+racer-rust/vim-racer
 "
 mkdir -p ~/.vim/autoload ~/.vim/bundle
 # make sure we have pathogen
